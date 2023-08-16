@@ -1,0 +1,52 @@
+<script>
+    // My Bank USSD code
+
+    let balance = 500000;
+    let name = prompt("What is your name?");
+    
+    let operation = prompt(`${name}, Welcome to my Bank
+    What would you like to do today?
+    1. Check Balance
+    2. Transfer
+    3. Purchase Airtime`);
+
+    if (operation == "1"){
+        alert(`Your account balance is NGN${balance}`);
+    }else if(operation == "2"){
+        let accountName = prompt(`Who do you want to make transfer to?:`);
+        let amount = +prompt(`How much would you like to transfer?:`);
+        if (accountName && amount){
+            let confirm = prompt(`You are about to send NGN${amount} to ${accountName}!
+            Please confirm to proceed:
+            Press 'y' for yes
+            Press 'n' for no`);
+            if (confirm == 'y'){
+                alert(`Your transfer of NGN${amount} to ${accountName} was successful
+                Your new account balance is NGN${balance - amount}`);
+            }else{
+                alert("Invalid input");
+            }
+        }else{
+            alert("Invalid input");
+        }
+    }else if(operation == "3"){
+        let recharge = prompt(`Choose:
+        1. Self
+        2. Others`)
+        if (recharge == "1"){
+            let rechargeAmount = +prompt("Enter amount:");
+            alert(`Your Airtime recharge of NGN${rechargeAmount} was successful
+            Your new account balance is NGN${balance - rechargeAmount}`);
+
+        }else if(recharge == "2"){
+            let otherPhone = prompt("Enter beneficiary's phone number:");
+            let rechargeAmount = +prompt("Enter amount:");
+            alert(`Your Airtime recharge of NGN${rechargeAmount} to ${otherPhone} was successful
+            Your new account balance is NGN${balance - rechargeAmount}`);
+        }else{
+            alert("Invalid input");
+        }
+    }else{
+            alert("Invalid input");
+    }
+</script>
