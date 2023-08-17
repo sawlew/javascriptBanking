@@ -1,0 +1,68 @@
+<script>
+   // My ATM Machine using Switch Statements
+
+let balance = 500000;
+let name = prompt("What is your name?");
+const pin = +prompt("Enter your pin:");
+
+switch (true) {
+    case pin == 1234:
+        let operation = prompt(`${name}, Welcome to my Bank
+            What would you like to do today?
+            1. Check Balance
+            2. Transfer
+            3. Deposit`);
+
+        switch (operation) {
+            case "1":
+                alert(`Your account balance is NGN${balance}`);
+                break;
+
+            case "2":
+                let accountName = prompt(`Enter Recipient's name:`);
+                let amount = +prompt(`Enter amount:`);
+
+                switch(true){
+                    case amount <= balance:
+                        let confirm = prompt(`You are about to send NGN${amount} to ${accountName}!
+                        Please confirm to proceed:
+                        Press 'y' for yes
+                        Press 'n' for no`);
+
+                        switch (confirm) {
+                            case 'y':
+                                alert(`Your transfer of NGN${amount} to ${accountName} was successful
+                                Your new account balance is NGN${balance - amount}`);
+                                break;
+
+                            case 'n':
+                                alert("Transaction cancelled");
+                                break;
+
+                            default:
+                                alert("Invalid input");
+                                break;
+                        }
+                        break;
+                    default:
+                        alert("Insufficient balance");
+                        break;
+                }
+                break;
+
+            case "3":
+                let deposit = +prompt("Enter amount:");
+                alert(`Your deposit of NGN${deposit} was successful
+                Your new account balance is NGN${balance + deposit}`);
+                break;
+
+            default:
+                alert("Invalid input");
+        }
+        break;
+    default:
+        alert("Incorrect pin");
+        break;
+}
+
+</script>
