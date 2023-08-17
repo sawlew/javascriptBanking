@@ -15,7 +15,7 @@
     }else if(operation == "2"){
         let accountName = prompt(`Who do you want to make transfer to?:`);
         let amount = +prompt(`How much would you like to transfer?:`);
-        if (accountName && amount){
+        if (amount <= balance){
             let confirm = prompt(`You are about to send NGN${amount} to ${accountName}!
             Please confirm to proceed:
             Press 'y' for yes
