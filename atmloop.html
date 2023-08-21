@@ -1,0 +1,49 @@
+<script>
+    // My ATM Machine
+
+    let balance = 500000;
+    while (balance == 500000){
+        let name = prompt("What is your name?");
+    let pin = +prompt("Enter your pin:");
+
+    if (pin === 1234){
+        
+    
+        let operation = prompt(`${name}, Welcome to my Bank
+        What would you like to do today?
+        1. Check Balance
+        2. Transfer
+        3. Deposit`);
+
+        if (operation == "1"){
+            alert(`Your account balance is NGN${balance}`);
+        }else if(operation == "2"){
+            let accountName = prompt(`Enter Recipient's name:`);
+            let amount = +prompt(`Enter amount`);
+            if (amount <= balance){
+                let confirm = prompt(`You are about to send NGN${amount} to ${accountName}!
+                Please confirm to proceed:
+                Press 'y' for yes
+                Press 'n' for no`);
+                if (confirm == 'y'){
+                    alert(`Your transfer of NGN${amount} to ${accountName} was successful
+                    Your new account balance is NGN${balance - amount}`);
+                }else{
+                    alert("Invalid selection");
+                }
+            }else{
+                alert("Inssufficient balance");
+            }
+        }else if(operation == "3"){
+                let deposit = +prompt("Enter amount:");
+                alert(`Your deposit of NGN${deposit} was successful
+                Your new account balance is NGN${balance + deposit}`);
+
+        }else{
+                alert("Invalid selection");
+        }
+    }else{
+        alert("Incorrect pin");
+    }
+    }
+</script>

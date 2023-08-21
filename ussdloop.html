@@ -1,0 +1,56 @@
+<script>
+    // My Bank USSD code(Using while loop)
+
+    let balance = 500000;
+    let code = prompt("Enter USSD code:");
+    while (code == "*737#"){
+        let operation = prompt(`Welcome to my Bank
+    
+    What would you like to do today?
+    1. Check Balance
+    2. Transfer
+    3. Purchase Airtime`);
+
+    if (operation == "1"){
+        alert(`Your account balance is NGN${balance}`);
+    }else if(operation == "2"){
+        let accountName = prompt(`Enter Recipient's name:`);
+        let amount = +prompt(`Enter amount`);
+        if (amount <= balance){
+            let confirm = prompt(`You are about to send NGN${amount} to ${accountName}!
+            Please confirm to proceed:
+            Press 'y' for yes
+            Press 'n' for no`);
+            if (confirm == 'y'){
+                alert(`Your transfer of NGN${amount} to ${accountName} was successful
+                Your new account balance is NGN${balance - amount}`);
+            }else if(confirm == 'n') {
+                alert("Transaction cancelled");
+            }else{
+            alert("Invalid selection");
+            }
+        }else{
+            alert("Insufficient balance");
+        }
+    }else if(operation == "3"){
+        let recharge = prompt(`Choose:
+        1. Self
+        2. Others`)
+        if (recharge == "1"){
+            let rechargeAmount = +prompt("Enter amount:");
+            alert(`Your Airtime recharge of NGN${rechargeAmount} was successful
+            Your new account balance is NGN${balance - rechargeAmount}`);
+
+        }else if(recharge == "2"){
+            let otherPhone = prompt("Enter beneficiary's phone number:");
+            let rechargeAmount = +prompt("Enter amount:");
+            alert(`Your Airtime recharge of NGN${rechargeAmount} to ${otherPhone} was successful
+            Your new account balance is NGN${balance - rechargeAmount}`);
+        }else{
+            alert("Invalid input");
+        }
+    }else{
+            alert("Invalid input");
+    }   
+    }
+</script>
